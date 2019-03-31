@@ -3,7 +3,7 @@
 ## General Comments
 Before I started the project I checked the Vanilla css framework and realised there was a react version of it, so I tried to use it and so I went for a quick react app. I realised though, that I couldn't add custom classes to the ```<Card>``` component ( I wonder why is that so) and I just thought I would have to overwrite more css this way, so I just went to use just the sass version of it. There's a ```PostCardReact.js``` file that's not finished/polished just so you can see how I started implementing it. Interesting fact, that's one of the projects I've done for eBay, creating a React Component library based on their css framework Skin, but in my case I did try to make those components as flexible as possible, allowing the devs to add extra classes and override attributes.
 
-I was going to use just fetch to get the data from the API (as all the examples I've seen) but then I decided to use axios just because I never used it before and apparently it gives you more extras such as being able to stop calls, etc and I thoght it might be quicker, but not really.
+I was going to use just fetch to get the data from the API (as all the examples I've seen) but then I decided to use axios just because I never used it before and apparently it gives you more extras such as being able to stop calls, etc and I thoght it might be quicker, but not really. I also added the polyfill to be able to use js promises which axios is based on.
 
 I had never really used the Wordpress API before! (and it's pretty cool they did it, actually), and I'm sure there's a better way of doing it than how I've done it but also I find it a bit weird, the way the implemented it. All categories and tags appear as just their id's, so I'm guessing in order to do this properly I would have to iterate through the other endpoints to map and match those id's to the categories, that's why I just hardcoded `Cloud and Server` and `Article`.
 
@@ -21,6 +21,9 @@ more developed and more functionality it will definitely benefit from more testi
 
 In terms of structure, again I went for something simple. I do personally like the atomic design way (smaller components, components made of components, pages, etc...)
 I think, in general I've tried to be as quick as possible, and so very pragmatic.
+
+I've tested it using BroswersStack for ie11 (that's when I realised I forgot about the promise js problem) and locally with Firefox, Chrome, Safari
+
 
 
 ## Step 1

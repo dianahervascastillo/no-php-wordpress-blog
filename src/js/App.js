@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import PostsList from './components/PostsList';
 import {getPosts} from './data/GetData';
+import '@babel/polyfill';
 
 export default class App extends Component{
   constructor(props){
