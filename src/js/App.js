@@ -1,5 +1,7 @@
-import React, { Component, Fragment } from 'react';
+import React, { Component } from 'react';
+import axios from 'axios';
 import PostsList from './components/PostsList';
+import {getPosts} from './data/GetData';
 
 export default class App extends Component{
   constructor(props){
@@ -9,33 +11,28 @@ export default class App extends Component{
     };
   }
 
-
   componentDidMount () {
-    return fetch('https://admin.insights.ubuntu.com/wp-json/wp/v2/posts?per_page=3&page=1&_embed=True')
-      .then((response) => response.json())
-      .then((responseJson) => {
-        this.setState({
-          posts: responseJson
-        })
+    let postUrl = `${getPosts}`;
+
+    axios.get(postUrl)
+    .then((response) => {
+      this.setState({
+        posts: response.data
       })
-      .catch((error) => {
-        console.error(error);
-      });
-    }
+    })
+    .catch((error) => {
+      console.log(error);
+    });
+  }
 
   render(){
-    console.log(this.state.posts)
     return(
-      <Fragment>
-        <header className='header'>App Header</header>
-        <main className="main" role='main'>
-          <h1 className="title">Hello and Welcome, React-Redux-Sass Starter kit is successfully build and your kit is ready to use</h1>
-          <div className='posts-list'>
-            <PostsList postsToShow={this.state.posts} />
-          </div>
-        </main>
-        <footer className="header">App Footer</footer>
-      </Fragment>
+      <main className="main" role='main'>
+        <h1 className="title">Hello! this are just 3 posts, with a hardcoded category and type</h1>
+        <div className='posts-list'>
+          <PostsList postsToShow={this.state.posts} />
+        </div>
+      </main>
     )
   }
 }
